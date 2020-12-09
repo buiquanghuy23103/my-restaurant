@@ -1,52 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Media } from 'reactstrap';
-import { DISHES } from '../shared/dishes';
 import { Dish } from '../shared/types';
 
 
 type MenuProps = {
+    dishes: Array<Dish>;
+};
 
-}
+const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
 
-type MenuState = {
-    dishes: Array<Dish>
-}
-
-class Menu extends React.Component<MenuProps, MenuState> {
-
-    state: MenuState = {
-        dishes: DISHES
-    }
-
-    render() {
-
-        const menu = this.state.dishes.map((dish) => {
-            return (
-                <div key={ dish.id } className="col-12 mt-5">
-                    <Media tag="li">
-                        <Media left middle>
-                            <Media object src={ dish.image } alt={ dish.name } />
-                        </Media>
-                        <Media body className="ml-5">
-                            <Media heading>{ dish.name }</Media>
-                            <p>{ dish.description }</p>
-                        </Media>
-                    </Media>
-                </div>
-            );
-        });
-
+    const menu = props.dishes.map((dish) => {
         return (
-            <div className="container">
-                <div className="row">
-                    <Media list>
-                        { menu }
+            <div key={ dish.id } className="col-12 mt-5">
+                <Media tag="li">
+                    <Media left middle>
+                        <Media object src={ dish.image } alt={ dish.name } />
                     </Media>
-                </div>
+                    <Media body className="ml-5">
+                        <Media heading>{ dish.name }</Media>
+                        <p>{ dish.description }</p>
+                    </Media>
+                </Media>
             </div>
         );
-    }
+    });
 
-}
+    return (
+        <div className="container">
+            <div className="row">
+                <Media list>
+                    { menu }
+                </Media>
+            </div>
+        </div>
+    );
+};
 
 export default Menu;

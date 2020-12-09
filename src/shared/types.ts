@@ -7,7 +7,7 @@ export type Dish = {
     price: string,
     description: string,
     comments: Array<Comment>
-}
+};
 
 export type Comment = {
     id: number,
@@ -15,4 +15,4 @@ export type Comment = {
     comment: string,
     author: string,
     date: string
-}
+};
