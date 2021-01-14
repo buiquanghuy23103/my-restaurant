@@ -7,7 +7,7 @@ type MenuProps = {
     dishes: Array<Dish>;
 };
 
-const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
+export default function Menu(props: MenuProps) {
 
     const menu = props.dishes.map((dish) => {
         return (
@@ -33,7 +33,5 @@ const Menu: React.FunctionComponent<MenuProps> = (props: MenuProps) => {
                 </Media>
             </div>
         </div>
-    );
-};
-
-export default Menu;
+    )
+}
