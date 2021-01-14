@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Dish } from '../shared/types';
 import DishCard from './DishCard';
 import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
+import DishDetail from './DishDetail';
 
 
 
@@ -18,13 +19,7 @@ export default function Menu(props: MenuProps) {
 
         if (selectedDish) {
             return (
-                <Card>
-                    <CardImg width="100%" src={ selectedDish.image } alt={ selectedDish.name } />
-                    <CardBody>
-                        <CardTitle>{ selectedDish.name }</CardTitle>
-                        <CardText>{ selectedDish.description }</CardText>
-                    </CardBody>
-                </Card>
+                <DishDetail dish={ selectedDish } />
             );
         } else {
             return (<div></div>)
