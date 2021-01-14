@@ -1,38 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './components/MenuComponent'
 import { Dish } from './shared/types';
 import { DISHES } from './shared/dishes';
 
-type AppProps = {
 
-};
+export default function App() {
 
-type AppState = {
-  dishes: Array<Dish>
-}
+  const [dishes, setDishes] = useState([] as Dish[]);
 
-class App extends React.Component<AppProps, AppState> {
+  useEffect(() => {
+    setDishes(DISHES);
+  }, [])
 
-  state: AppState = {
-    dishes: DISHES
-  }
-
-  render() {
-    return (
-      <div>
+  return (
+    <div>
         <Navbar dark color="primary">
           <div className="container">
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
-        <Menu dishes={ this.state.dishes } />
+        <Menu dishes={ dishes } />
       </div>
-    );
-  }
-
-
+  )
 }
-
-export default App;
