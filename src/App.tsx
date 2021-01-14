@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponent'
+import Menu from './components/Menu'
 import { Dish } from './shared/types';
 import { DISHES } from './shared/dishes';
 

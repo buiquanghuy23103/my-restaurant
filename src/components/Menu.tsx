@@ -7,7 +7,7 @@ type MenuProps = {
     dishes: Array<Dish>;
 };
 
-export default function MenuComponent(props: MenuProps) {
+export default function Menu(props: MenuProps) {
 
     const menu = props.dishes.map((dish) => {
         return (
