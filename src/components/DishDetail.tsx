@@ -3,13 +3,17 @@ import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
 import { Dish } from '../shared/types';
 
 type DishDetailProps = {
-    dish: Dish
+    dish: Dish | null
 };
 
 export default function DishDetail(props: DishDetailProps) {
 
+    if (props.dish == null) {
+        return (<div></div>);
+    }
+
     function renderComments() {
-        const comments = props.dish.comments;
+        const comments = props.dish!.comments;
         if (comments.length > 0) {
             return comments.map(comment => (
                 <div>
