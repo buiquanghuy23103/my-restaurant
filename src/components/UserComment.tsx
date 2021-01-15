@@ -8,12 +8,12 @@ type CommentProps = {
     comment: Comment
 };
 
-export default function UserComment(props: CommentProps) {
-    const dateString = convertToFormattedDateString(props.comment.date);
+export default function UserComment({ comment }: CommentProps) {
+    const dateString = convertToFormattedDateString(comment.date);
     return (
         <div>
-            <p>{ props.comment.comment }</p>
-            <p>---{ props.comment.author }, { dateString }</p>
+            <p>{ comment.comment }</p>
+            <p>---{ comment.author }, { dateString }</p>
         </div>
     )
 }

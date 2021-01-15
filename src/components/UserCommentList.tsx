@@ -6,12 +6,12 @@ type CommentsProps = {
     comments: Comment[]
 };
 
-export default function UserCommentList(props: CommentsProps) {
+export default function UserCommentList({ comments }: CommentsProps) {
 
     let result: JSX.Element | JSX.Element[] | null;
 
-    if (props.comments.length > 0) {
-        result = props.comments.map(comment => (
+    if (comments.length > 0) {
+        result = comments.map(comment => (
             <UserComment key={ comment.id } comment={ comment } />
         ));
     } else {

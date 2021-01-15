@@ -7,9 +7,9 @@ type DishDetailProps = {
     dish: Dish | null
 };
 
-export default function DishDetail(props: DishDetailProps) {
+export default function DishDetail({ dish }: DishDetailProps) {
 
-    if (props.dish == null) {
+    if (dish == null) {
         return (<div></div>);
     }
 
@@ -17,16 +17,16 @@ export default function DishDetail(props: DishDetailProps) {
         <div className="row">
             <div className="col-12 col-md-5 m-1">
                 <Card>
-                    <CardImg width="100%" src={ props.dish.image } alt={ props.dish.name } />
+                    <CardImg width="100%" src={ dish.image } alt={ dish.name } />
                     <CardBody>
-                        <CardTitle>{ props.dish.name }</CardTitle>
-                        <CardText>{ props.dish.description }</CardText>
+                        <CardTitle>{ dish.name }</CardTitle>
+                        <CardText>{ dish.description }</CardText>
                     </CardBody>
 
                 </Card>
 
             </div>
-            <UserCommentList comments={ props.dish.comments } />
+            <UserCommentList comments={ dish.comments } />
         </div>
     )
 }

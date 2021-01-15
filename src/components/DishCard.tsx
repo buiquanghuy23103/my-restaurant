@@ -7,15 +7,15 @@ type DishCardProps = {
     onItemClick: () => void
 }
 
-export default function DishCard(props: DishCardProps) {
+export default function DishCard({ dish, onItemClick }: DishCardProps) {
 
 
     return (
         <div className="col-12 col-md-5 m-1">
-            <Card onClick={ props.onItemClick }>
-                <CardImg width="100%" src={ props.dish.image } alt={ props.dish.name } />
+            <Card onClick={ onItemClick }>
+                <CardImg width="100%" src={ dish.image } alt={ dish.name } />
                 <CardImgOverlay>
-                    <CardTitle>{ props.dish.name }</CardTitle>
+                    <CardTitle>{ dish.name }</CardTitle>
                 </CardImgOverlay>
             </Card>
         </div>

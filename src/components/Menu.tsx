@@ -9,12 +9,12 @@ type MenuProps = {
     dishes: Array<Dish>;
 };
 
-export default function Menu(props: MenuProps) {
+export default function Menu({ dishes }: MenuProps) {
 
     const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
 
-    const menu = props.dishes.map((dish) => {
+    const menu = dishes.map((dish) => {
         return (
             <DishCard
                 key={ dish.id }
