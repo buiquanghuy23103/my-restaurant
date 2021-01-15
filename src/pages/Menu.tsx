@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
+import { DISHES } from '../shared/dishes';
 import { Dish } from '../shared/types';
-import DishCard from './DishCard';
-import DishDetail from './DishDetail';
+import DishCard from '../components/DishCard';
+import DishDetail from '../components/DishDetail';
 
-
-
-type Props = {
-    dishes: Array<Dish>;
-};
-
-export default function Menu({ dishes }: Props) {
+export default function Menu() {
 
     const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
+    const [dishes, setDishes] = useState(DISHES);
+
 
 
     const menu = dishes.map((dish) => {

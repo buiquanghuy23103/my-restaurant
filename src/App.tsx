@@ -1,12 +1,14 @@
 import React from 'react';
-import MainPage from './pages/MainPage';
+import Header from './components/Header';
+import Menu from './pages/Menu';
 
 
 export default function App() {
 
   return (
     <div>
-      <MainPage />
+      <Header />
+      <Menu />
     </div>
   )
 }
