@@ -5,11 +5,11 @@ import DishDetail from './DishDetail';
 
 
 
-type MenuProps = {
+type Props = {
     dishes: Array<Dish>;
 };
 
-export default function Menu({ dishes }: MenuProps) {
+export default function Menu({ dishes }: Props) {
 
     const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 

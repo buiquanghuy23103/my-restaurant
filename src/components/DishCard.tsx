@@ -2,12 +2,12 @@ import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { Dish } from '../shared/types';
 
-type DishCardProps = {
+type Props = {
     dish: Dish,
     onItemClick: () => void
 }
 
-export default function DishCard({ dish, onItemClick }: DishCardProps) {
+export default function DishCard({ dish, onItemClick }: Props) {
 
 
     return (

@@ -4,11 +4,11 @@ import convertToFormattedDateString from '../utils/DateUtil';
 
 
 
-type CommentProps = {
+type Props = {
     comment: Comment
 };
 
-export default function UserComment({ comment }: CommentProps) {
+export default function UserComment({ comment }: Props) {
     const dateString = convertToFormattedDateString(comment.date);
     return (
         <div>

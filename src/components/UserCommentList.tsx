@@ -2,11 +2,11 @@ import React from 'react'
 import { Comment } from '../shared/types';
 import UserComment from './UserComment';
 
-type CommentsProps = {
+type Props = {
     comments: Comment[]
 };
 
-export default function UserCommentList({ comments }: CommentsProps) {
+export default function UserCommentList({ comments }: Props) {
 
     let result: JSX.Element | JSX.Element[] | null;
 

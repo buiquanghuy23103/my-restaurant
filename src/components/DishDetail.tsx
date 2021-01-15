@@ -3,11 +3,11 @@ import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
 import { Dish } from '../shared/types';
 import UserCommentList from './UserCommentList';
 
-type DishDetailProps = {
+type Props = {
     dish: Dish | null
 };
 
-export default function DishDetail({ dish }: DishDetailProps) {
+export default function DishDetail({ dish }: Props) {
 
     if (dish == null) {
         return (<div></div>);
