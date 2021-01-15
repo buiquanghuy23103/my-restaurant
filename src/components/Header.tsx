@@ -4,7 +4,7 @@ import { Jumbotron, Navbar, NavbarBrand } from 'reactstrap'
 export default function Header() {
     return (
         <React.Fragment>
-            <Navbar dark color="primary">
+            <Navbar dark>
                 <div className="container">
                     <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
                 </div>
