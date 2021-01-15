@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
 import { Dish } from '../shared/types';
-import convertToFormattedDateString from '../utils/DateUtil';
+import UserCommentList from './UserCommentList';
 
 type DishDetailProps = {
     dish: Dish | null
@@ -11,23 +11,6 @@ export default function DishDetail(props: DishDetailProps) {
 
     if (props.dish == null) {
         return (<div></div>);
-    }
-
-    function renderComments() {
-        const comments = props.dish!.comments;
-        if (comments.length > 0) {
-            return comments.map(comment => {
-                const dateString = convertToFormattedDateString(comment.date);
-                return (
-                    <div>
-                        <p>{ comment.comment }</p>
-                        <p>---{ comment.author }, { dateString }</p>
-                    </div>
-                )
-            });
-        } else {
-            return (<p>No comments</p>)
-        }
     }
 
     return (
@@ -43,10 +26,7 @@ export default function DishDetail(props: DishDetailProps) {
                 </Card>
 
             </div>
-            <div className="col-12 col-md-5 m-1">
-                <h4>Comments</h4>
-                { renderComments() }
-            </div>
+            <UserCommentList comments={ props.dish.comments } />
         </div>
     )
 }
