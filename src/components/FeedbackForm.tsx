@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React from 'react';
+import { Button, Col, FormGroup, Label } from 'reactstrap';
 import * as Yup from 'yup';
 
 
@@ -19,7 +20,9 @@ export default function FeedbackForm() {
         firstname: "firstname",
         lastname: "lastname",
         email: "email",
-
+        agree: "agree",
+        contactType: "contactType",
+        message: "message"
     }
 
     const initFormValues: MyForm = {
@@ -56,20 +59,54 @@ export default function FeedbackForm() {
                     } }
                     validationSchema={ validationSchema }
                 >
-                    <Form>
-                        <label>Firstname</label>
-                        <Field name={ FORM_FIELDS.firstname } type="text" />
-                        <ErrorMessage name={ FORM_FIELDS.firstname } />
+                    <Form className="row">
+                        <FormGroup row>
+                            <Label md={ 2 }>Firstname</Label>
+                            <Col md={ 10 }>
+                                <Field name={ FORM_FIELDS.firstname } type="text" />
+                                <ErrorMessage name={ FORM_FIELDS.firstname } />
+                            </Col>
+                        </FormGroup>
 
-                        <label>Lastname</label>
-                        <Field name={ FORM_FIELDS.lastname } type="text" />
-                        <ErrorMessage name={ FORM_FIELDS.lastname } />
+                        <FormGroup row>
+                            <Label md={ 2 }>Lastname</Label>
+                            <Col md={ 10 }>
+                                <Field name={ FORM_FIELDS.lastname } type="text" />
+                                <ErrorMessage name={ FORM_FIELDS.lastname } />
+                            </Col>
+                        </FormGroup>
 
-                        <label>Email</label>
-                        <Field name={ FORM_FIELDS.email } type="text" />
-                        <ErrorMessage name={ FORM_FIELDS.email } />
+                        <FormGroup row>
+                            <Label md={ 2 }>Email</Label>
+                            <Col md={ 10 }>
+                                <Field name={ FORM_FIELDS.email } type="text" />
+                                <ErrorMessage name={ FORM_FIELDS.email } />
+                            </Col>
+                        </FormGroup>
 
-                        <button type="submit">Submit</button>
+                        <FormGroup row>
+                            <Label md={ 2 }>Agree</Label>
+                            <Col md={ 10 }>
+                                <Field name={ FORM_FIELDS.agree } type="checkbox" />
+                                <ErrorMessage name={ FORM_FIELDS.email } />
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label md={ 2 }>Feedback</Label>
+                            <Col md={ 10 }>
+                                <Field name={ FORM_FIELDS.message } type="text" />
+                                <ErrorMessage name={ FORM_FIELDS.email } />
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Col md={ { size: 10, offset: 2 } }>
+                                <Button type="submit" color="primary">
+                                    Send Feedback
+                                </Button>
+                            </Col>
+                        </FormGroup>
                     </Form>
 
                 </Formik>
