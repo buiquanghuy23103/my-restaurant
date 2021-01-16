@@ -1,15 +1,16 @@
 import React from 'react';
 import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
-import { Dish } from '../shared/types';
+import { Comment, Dish } from '../shared/types';
 import UserCommentList from './UserCommentList';
 
 type Props = {
-    dish: Dish | null
+    dish: Dish | null | undefined,
+    comments: Comment[]
 };
 
-export default function DishDetail({ dish }: Props) {
+export default function DishDetail({ dish, comments }: Props) {
 
-    if (dish == null) {
+    if (!dish) {
         return (<div></div>);
     }
 
@@ -26,7 +27,7 @@ export default function DishDetail({ dish }: Props) {
                 </Card>
 
             </div>
-            <UserCommentList comments={ dish.comments } />
+            <UserCommentList comments={ comments } />
         </div>
     )
 }
