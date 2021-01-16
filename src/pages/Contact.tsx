@@ -1,4 +1,5 @@
 import React from 'react'
+import FeedbackForm from '../components/FeedbackForm'
 
 export default function Contact() {
     return (
@@ -29,6 +30,7 @@ export default function Contact() {
                     </div>
                 </div>
             </div>
+            <FeedbackForm />
         </div>
     );
 }
