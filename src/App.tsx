@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import DishDetail from './components/DishDetail';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -7,10 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import { COMMENTS } from './shared/comments';
-import { DISHES } from './shared/dishes';
-import { LEADERS } from './shared/leaders';
-import { PROMOTIONS } from './shared/promotions';
+import { AppStore } from './redux/reducer';
 
 type UrlParams = {
   dishId: string,
@@ -20,10 +18,10 @@ export default function App() {
 
   const match = useRouteMatch<UrlParams>("/menu/:dishId");
 
-  const [dishes, setDishes] = useState(DISHES);
-  const [comments, setComments] = useState(COMMENTS);
-  const [promotions, setPromotions] = useState(PROMOTIONS);
-  const [leaders, setLeaders] = useState(LEADERS);
+  const dishes = useSelector((state: AppStore) => state.dishes);
+  const promotions = useSelector((state: AppStore) => state.promotions);
+  const leaders = useSelector((state: AppStore) => state.leaders);
+  const comments = useSelector((state: AppStore) => state.comments);
 
   const oneFeaturedDish = dishes.find(dish => dish.featured);
   const oneFeaturedPromotion = promotions.find(promotion => promotion.featured);
@@ -31,8 +29,6 @@ export default function App() {
 
   function selectedDish() {
     const dishId = match?.params.dishId;
-    console.log("Dish id is null");
-
     if (!dishId) return (dishes[0]);
     return dishes.find(dish => dish.id === parseInt(dishId));
   }
