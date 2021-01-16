@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Button, Collapse, Jumbotron, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
+import LoginForm from './LoginForm';
 
 export default function Header() {
 
@@ -87,7 +88,7 @@ export default function Header() {
             <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
                 <ModalHeader toggle={ toggleModal }>Login</ModalHeader>
                 <ModalBody>
-
+                    <LoginForm />
                 </ModalBody>
             </Modal>
         </React.Fragment>
