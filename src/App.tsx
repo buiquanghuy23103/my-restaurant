@@ -3,6 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch, useParams, useRouteMatch } from
 import DishDetail from './components/DishDetail';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
@@ -67,7 +68,6 @@ export default function App() {
 
 
         <Route path="/menu/:dishId">
-          { console.log(match) }
           <DishDetail
             dish={ selectedDish() }
             comments={ selectedComments() }
@@ -76,6 +76,13 @@ export default function App() {
 
 
         <Route exact path="/contactus" component={ Contact } />
+
+
+        <Route exact path="/aboutus">
+          <About
+            leaders={ leaders }
+          />
+        </Route>
 
 
         <Redirect to="/" />
