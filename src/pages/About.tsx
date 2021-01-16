@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
+import LeaderInfo from '../components/LeaderInfo';
 import { Leader } from '../shared/types';
 
 type Props = {
@@ -11,7 +12,7 @@ export default function About({ leaders }: Props) {
 
     const leaderNames = leaders.map(leader => {
         return (
-            <p>Leader {leader.name }</p>
+            <LeaderInfo key={ leader.id } leader={ leader } />
         );
     })
 
