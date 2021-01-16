@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Comment, Dish } from '../shared/types';
 import DishCard from '../components/DishCard';
 import DishDetail from '../components/DishDetail';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 type Props = {
     dishes: Dish[],
@@ -29,6 +31,16 @@ export default function Menu({ dishes, comments }: Props) {
 
     return (
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link to="/">Home</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>
+                        Menu
+                    </BreadcrumbItem>
+                </Breadcrumb>
+            </div>
             <div className="row">
                 { menu }
             </div>
