@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { DISHES } from '../shared/dishes';
-import { Dish } from '../shared/types';
+import { Comment, Dish } from '../shared/types';
 import DishCard from '../components/DishCard';
 import DishDetail from '../components/DishDetail';
 
-export default function Menu() {
+type Props = {
+    dishes: Dish[],
+    comments: Comment[]
+};
+
+export default function Menu({ dishes, comments }: Props) {
 
     const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
-    const [dishes, setDishes] = useState(DISHES);
-
 
 
     const menu = dishes.map((dish) => {
@@ -20,13 +22,20 @@ export default function Menu() {
         );
     });
 
+    const commentsOfSelectedDish = comments.filter(comment =>
+        comment.dishId === selectedDish?.id
+    );
+
+
     return (
         <div className="container">
             <div className="row">
                 { menu }
             </div>
             <div className="row">
-                <DishDetail dish={ selectedDish } />
+                <DishDetail
+                    dish={ selectedDish }
+                    comments={ commentsOfSelectedDish } />
             </div>
         </div>
     )
