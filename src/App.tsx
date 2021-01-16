@@ -18,11 +18,21 @@ export default function App() {
   const [promotions, setPromotions] = useState(PROMOTIONS);
   const [leaders, setLeaders] = useState(LEADERS);
 
+  const oneFeaturedDish = dishes.find(dish => dish.featured);
+  const oneFeaturedPromotion = promotions.find(promotion => promotion.featured);
+  const oneFeaturedLeader = leaders.find(leader => leader.featured);
+
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path="/" component={ Home } />
+        <Route exact path="/">
+          <Home
+            dish={ oneFeaturedDish }
+            promotion={ oneFeaturedPromotion }
+            leader={ oneFeaturedLeader }
+          />
+        </Route>
         <Route exact path="/menu">
           <Menu
             dishes={ dishes }
