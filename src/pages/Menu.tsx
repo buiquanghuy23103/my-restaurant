@@ -14,8 +14,8 @@ export default function Menu({ dishes, comments }: Props) {
 
     const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
-
     const menu = dishes.map((dish) => {
+
         return (
             <DishCard
                 key={ dish.id }

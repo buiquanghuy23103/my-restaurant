@@ -4,13 +4,13 @@ import { Comment, Dish } from '../shared/types';
 import UserCommentList from './UserCommentList';
 
 type Props = {
-    dish: Dish | null,
+    dish: Dish | null | undefined,
     comments: Comment[]
 };
 
 export default function DishDetail({ dish, comments }: Props) {
 
-    if (dish == null) {
+    if (!dish) {
         return (<div></div>);
     }
 

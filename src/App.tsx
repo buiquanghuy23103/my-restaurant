@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
+import DishDetail from './components/DishDetail';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Contact from './pages/Contact';
@@ -10,8 +11,13 @@ import { DISHES } from './shared/dishes';
 import { LEADERS } from './shared/leaders';
 import { PROMOTIONS } from './shared/promotions';
 
+type UrlParams = {
+  dishId: string,
+}
 
 export default function App() {
+
+  const match = useRouteMatch<UrlParams>("/menu/:dishId");
 
   const [dishes, setDishes] = useState(DISHES);
   const [comments, setComments] = useState(COMMENTS);
@@ -22,10 +28,26 @@ export default function App() {
   const oneFeaturedPromotion = promotions.find(promotion => promotion.featured);
   const oneFeaturedLeader = leaders.find(leader => leader.featured);
 
+  function selectedDish() {
+    const dishId = match?.params.dishId;
+    console.log("Dish id is null");
+
+    if (!dishId) return (dishes[0]);
+    return dishes.find(dish => dish.id === parseInt(dishId));
+  }
+
+  function selectedComments() {
+    const dishId = match?.params.dishId;
+    if (!dishId) return [];
+    return comments.filter(comment => comment.dishId === parseInt(dishId));
+  }
+
   return (
-    <BrowserRouter>
+    <div>
       <Header />
       <Switch>
+
+
         <Route exact path="/">
           <Home
             dish={ oneFeaturedDish }
@@ -33,15 +55,34 @@ export default function App() {
             leader={ oneFeaturedLeader }
           />
         </Route>
+
+
         <Route exact path="/menu">
           <Menu
             dishes={ dishes }
-            comments={ comments } />
+            comments={ comments }
+          />
         </Route>
+
+
+
+        <Route path="/menu/:dishId">
+          { console.log(match) }
+          <DishDetail
+            dish={ selectedDish() }
+            comments={ selectedComments() }
+          />
+        </Route>
+
+
         <Route exact path="/contactus" component={ Contact } />
+
+
         <Redirect to="/" />
+
+
       </Switch>
       <Footer />
-    </BrowserRouter>
+    </div>
   )
 }
