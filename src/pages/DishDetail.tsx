@@ -17,11 +17,19 @@ export default function DishDetail() {
     const match = useRouteMatch<UrlParams>("/menu/:dishId");
 
 
-    const dishes = useSelector((state: AppState) => state.dishState.dishes);
-    const dishLoading = useSelector((state: AppState) => state.dishState.isLoading);
-    const dishError = useSelector((state: AppState) => state.dishState.errorMessage);
+    const dishes = useSelector((state: AppState) =>
+        state.dishState.dishes
+    );
+    const dishLoading = useSelector((state: AppState) =>
+        state.dishState.isLoading
+    );
+    const dishError = useSelector((state: AppState) =>
+        state.dishState.errorMessage
+    );
 
-    const comments = useSelector((state: AppState) => state.comments);
+    const comments = useSelector((state: AppState) =>
+        state.comments
+    );
 
     const dish = selectedDish();
     const commentOfCurrentDish = selectedComments();
@@ -36,7 +44,9 @@ export default function DishDetail() {
     function selectedComments() {
         const dishId = match?.params.dishId;
         if (!dishId) return [];
-        return comments.filter(comment => comment.dishId === parseInt(dishId));
+        return comments.filter(comment =>
+            comment.dishId === parseInt(dishId)
+        );
     }
 
 
