@@ -21,7 +21,7 @@ export default function Home() {
 
 
     const leader = useSelector((state: AppState) =>
-        state.leaders.find(leader => leader.featured)
+        state.leaderState.leaders.find(leader => leader.featured)
     );
 
     const promotion = useSelector((state: AppState) =>

@@ -1,18 +1,25 @@
 import { Leader } from "../../shared/types";
 
-export const ADD_LEADER = "ADD_LEADER";
-export const REMOVE_LEADER = "REMOVE_LEADER";
+export const INIT_LEADER = "INIT_LEADER";
+export const LOAD_LEADER = "LOAD_LEADER";
+export const FAIL_LEADER = "FAIL_LEADER";
 
-interface AddLeaderAction {
-    type: typeof ADD_LEADER,
-    payload: Leader
+interface InitLeaderAction {
+    type: typeof INIT_LEADER,
+    payload: Leader[]
 }
 
-interface RemoveLeaderAction {
-    type: typeof REMOVE_LEADER,
-    meta: {
-        timestamp: number
-    }
+interface LoadLeaderAction {
+    type: typeof LOAD_LEADER
 }
 
-export type LeaderActionTypes = AddLeaderAction | RemoveLeaderAction
+interface FailLeaderAction {
+    type: typeof FAIL_LEADER,
+    errorMessage: string
+}
+
+
+export type LeaderActionTypes =
+    InitLeaderAction
+    | LoadLeaderAction
+    | FailLeaderAction

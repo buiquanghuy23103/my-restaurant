@@ -9,6 +9,7 @@ import DishDetail from './pages/DishDetail';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import { fetchDishes } from './redux/dish/dishActions';
+import { fetchLeaders } from './redux/leader/leaderActions';
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchDishes());
+    dispatch(fetchLeaders());
   }, []);
 
   return (

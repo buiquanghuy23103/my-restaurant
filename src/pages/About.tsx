@@ -9,7 +9,7 @@ import { AppState } from '../redux/configureStore';
 export default function About() {
 
     const leaders = useSelector((state: AppState) =>
-        state.leaders
+        state.leaderState.leaders
     );
 
     const leaderNames = leaders.map(leader => {
