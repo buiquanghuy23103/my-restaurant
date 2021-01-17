@@ -46,7 +46,7 @@ export default function DishDetail({ dish, comments }: Props) {
             <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
                 <ModalHeader toggle={ toggleModal }>Submit Comment</ModalHeader>
                 <ModalBody>
-                    <CommentForm />
+                    <CommentForm dishId={ dish.id } />
                 </ModalBody>
             </Modal>
         </div>

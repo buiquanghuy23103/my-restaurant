@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addComment } from '../redux/comment/commentActions';
 
 
 enum FormFields {
@@ -8,22 +10,39 @@ enum FormFields {
     comment = "comment",
 }
 
-export default function CommentForm(): JSX.Element {
+type Props = {
+    dishId: number
+}
+
+export default function CommentForm({ dishId }: Props): JSX.Element {
+
+    const dispatch = useDispatch();
+
+    function addCommentFromForm(values: { name: string, comment: string }) {
+        dispatch(
+            addComment({
+                comment: values.comment,
+                rating: 3,
+                author: values.name,
+                dishId: dishId
+            })
+        )
+    }
 
     return (
         <Formik
             initialValues={ {
-                email: '',
-                password: ''
+                name: '',
+                comment: ''
             } }
             validateOnChange
             onSubmit={ (values, formikBag) => {
-
+                addCommentFromForm(values)
             } }
             validationSchema={
                 Yup.object({
-                    email: Yup.string().email().required(),
-                    password: Yup.string().min(6).required()
+                    name: Yup.string().min(6).required(),
+                    comment: Yup.string().min(6).required()
                 })
             }
         >

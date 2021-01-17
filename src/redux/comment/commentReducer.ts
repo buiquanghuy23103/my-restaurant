@@ -7,7 +7,7 @@ export default function commentReducer(
 ) {
     switch (action.type) {
         case ADD_COMMENT:
-            return state;
+            return state.concat(action.payload);
 
         default:
             return state;
