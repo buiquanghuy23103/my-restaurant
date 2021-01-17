@@ -4,6 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { Button, Card, CardBody, CardImg, CardText, CardTitle, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { AppState } from '../redux/configureStore';
 import CommentForm from './CommentForm';
+import Loading from './Loading';
 import UserCommentList from './UserCommentList';
 
 type UrlParams = {
@@ -16,6 +17,7 @@ export default function DishDetail() {
 
 
     const dishes = useSelector((state: AppState) => state.dishState.dishes);
+    const dishLoading = useSelector((state: AppState) => state.dishState.isLoading);
     const comments = useSelector((state: AppState) => state.comments);
 
     const dish = selectedDish();
@@ -41,6 +43,8 @@ export default function DishDetail() {
     function toggleModal() {
         setIsModalOpen(!isModalOpen);
     }
+
+    if (dishLoading) return <Loading />
 
     if (!dish) {
         return (<div></div>);
