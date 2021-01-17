@@ -8,7 +8,7 @@ import { BASE_URL } from "../../shared/baseUrl";
 export const fetchDishes = (): AppThunk => async (dispatch) => {
     dispatch(loadDish(true));
 
-    return axios.get<Dish[]>(BASE_URL + "/dishes")
+    return axios.get<Dish[]>(BASE_URL + "dishes")
         .then(res => dispatch(initDishes(res.data)))
         .catch(err => console.log(err));
 

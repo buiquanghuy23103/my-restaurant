@@ -7,6 +7,7 @@ import ErrorText from '../components/ErrorText';
 import Loading from '../components/Loading';
 import UserCommentList from '../components/UserCommentList';
 import CommentForm from '../components/CommentForm';
+import { BASE_URL } from '../shared/baseUrl';
 
 type UrlParams = {
     dishId: string,
@@ -66,7 +67,7 @@ export default function DishDetail() {
             <div className="row">
                 <div className="col-12 col-md-5 m-1">
                     <Card>
-                        <CardImg width="100%" src={ dish.image } alt={ dish.name } />
+                        <CardImg width="100%" src={ BASE_URL + dish.image } alt={ dish.name } />
                         <CardBody>
                             <CardTitle>{ dish.name }</CardTitle>
                             <CardText>{ dish.description }</CardText>

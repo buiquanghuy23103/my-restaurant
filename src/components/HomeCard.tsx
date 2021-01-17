@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardImg, CardSubtitle, CardTitle } from 'reactstrap';
+import { BASE_URL } from '../shared/baseUrl';
 
 type Props = {
     image: string,
@@ -11,7 +12,7 @@ type Props = {
 export default function HomeCard({ image, name, designation, description }: Props) {
     return (
         <Card>
-            <CardImg src={ image } alt={ name } />
+            <CardImg src={ BASE_URL + image } alt={ name } />
             <CardBody>
                 <CardTitle>{ name }</CardTitle>
                 { designation && <CardSubtitle>{ designation }</CardSubtitle> }
