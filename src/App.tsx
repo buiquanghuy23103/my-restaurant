@@ -54,10 +54,7 @@ export default function App() {
 
 
         <Route exact path="/menu">
-          <Menu
-            dishes={ dishes }
-            comments={ comments }
-          />
+          <Menu />
         </Route>
 
 

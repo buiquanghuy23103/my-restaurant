@@ -4,13 +4,18 @@ import DishCard from '../components/DishCard';
 import DishDetail from '../components/DishDetail';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { AppState } from '../redux/configureStore';
 
-type Props = {
-    dishes: Dish[],
-    comments: Comment[]
-};
+export default function Menu() {
 
-export default function Menu({ dishes, comments }: Props) {
+    const dishes = useSelector((state: AppState) =>
+        state.dishState.dishes
+    );
+
+    const comments = useSelector((state: AppState) =>
+        state.comments
+    );
 
     const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
