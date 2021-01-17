@@ -10,7 +10,7 @@ const appReducer = combineReducers({
     leaders: leaderReducer,
     dishState: dishReducer,
     promotions: promotionReducer,
-    comments: commentReducer
+    commentState: commentReducer
 });
 
 const middleWare = applyMiddleware(thunk, logger);

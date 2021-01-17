@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
-import { Dish } from '../shared/types';
+import { Dish } from '../redux/dish/dishTypes';
 
 type Props = {
     dish: Dish,

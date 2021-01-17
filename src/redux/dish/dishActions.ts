@@ -1,7 +1,7 @@
 import { DISHES } from "../../shared/dishes";
-import { Dish } from "../../shared/types";
 import { AppThunk } from "../configureStore"
 import { INIT_DISHES, DishActionTypes, FAIL_DISH, LOAD_DISH } from "./dishActionTypes"
+import { Dish } from "./dishTypes";
 
 export const fetchDishes = (): AppThunk => async (dispatch) => {
     dispatch(loadDish(true));

@@ -1,4 +1,4 @@
-import { Dish } from "./types";
+import { Dish } from "../redux/dish/dishTypes";
 
 export const DISHES: Dish[] =
     [

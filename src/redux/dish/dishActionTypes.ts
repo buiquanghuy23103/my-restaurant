@@ -1,4 +1,4 @@
-import { Dish } from "../../shared/types";
+import { Dish } from "./dishTypes";
 
 export const ADD_DISH = "ADD_DISH";
 export const INIT_DISHES = "INIT_DISHES";

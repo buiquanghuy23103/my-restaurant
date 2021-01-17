@@ -28,7 +28,7 @@ export default function DishDetail() {
     );
 
     const comments = useSelector((state: AppState) =>
-        state.comments
+        state.commentState.comments
     );
 
     const dish = selectedDish();
