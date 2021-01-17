@@ -11,13 +11,8 @@ import Menu from './pages/Menu';
 import { AppState } from './redux/configureStore';
 import { fetchDishes } from './redux/dish/dishActions';
 
-type UrlParams = {
-  dishId: string,
-}
 
 export default function App() {
-
-  const match = useRouteMatch<UrlParams>("/menu/:dishId");
 
 
   const dispatch = useDispatch();
@@ -26,17 +21,8 @@ export default function App() {
   const leaders = useSelector((state: AppState) => state.leaders);
   const comments = useSelector((state: AppState) => state.comments);
 
-  function selectedDish() {
-    const dishId = match?.params.dishId;
-    if (!dishId) return (dishes[0]);
-    return dishes.find(dish => dish.id === parseInt(dishId));
-  }
 
-  function selectedComments() {
-    const dishId = match?.params.dishId;
-    if (!dishId) return [];
-    return comments.filter(comment => comment.dishId === parseInt(dishId));
-  }
+
 
   useEffect(() => {
     dispatch(fetchDishes());
@@ -60,10 +46,7 @@ export default function App() {
 
 
         <Route path="/menu/:dishId">
-          <DishDetail
-            dish={ selectedDish() }
-            comments={ selectedComments() }
-          />
+          <DishDetail />
         </Route>
 
 

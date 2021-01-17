@@ -5,10 +5,9 @@ import { Dish } from '../shared/types';
 
 type Props = {
     dish: Dish,
-    onItemClick: () => void
 }
 
-export default function DishCard({ dish, onItemClick }: Props) {
+export default function DishCard({ dish }: Props) {
 
 
     return (

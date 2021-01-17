@@ -1,15 +1,39 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import { Button, Card, CardBody, CardImg, CardText, CardTitle, Modal, ModalBody, ModalHeader } from 'reactstrap';
-import { Comment, Dish } from '../shared/types';
+import { AppState } from '../redux/configureStore';
 import CommentForm from './CommentForm';
 import UserCommentList from './UserCommentList';
 
-type Props = {
-    dish: Dish | null | undefined,
-    comments: Comment[]
-};
+type UrlParams = {
+    dishId: string,
+}
 
-export default function DishDetail({ dish, comments }: Props) {
+export default function DishDetail() {
+
+    const match = useRouteMatch<UrlParams>("/menu/:dishId");
+
+
+    const dishes = useSelector((state: AppState) => state.dishState.dishes);
+    const comments = useSelector((state: AppState) => state.comments);
+
+    const dish = selectedDish();
+    const commentOfCurrentDish = selectedComments();
+
+
+    function selectedDish() {
+        const dishId = match?.params.dishId;
+        if (!dishId) return (dishes[0]);
+        return dishes.find(dish => dish.id === parseInt(dishId));
+    }
+
+    function selectedComments() {
+        const dishId = match?.params.dishId;
+        if (!dishId) return [];
+        return comments.filter(comment => comment.dishId === parseInt(dishId));
+    }
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,7 +61,7 @@ export default function DishDetail({ dish, comments }: Props) {
             </div>
             <div className="col">
 
-                <UserCommentList comments={ comments } />
+                <UserCommentList comments={ commentOfCurrentDish } />
                 <Button outline onClick={ toggleModal }>
                     <span className="fa fa-sign-in fa-lg"></span>
                     Submit Comment
