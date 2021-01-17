@@ -1,54 +1,58 @@
-import React, { useState } from 'react';
-import { Comment, Dish } from '../shared/types';
+import React from 'react';
 import DishCard from '../components/DishCard';
-import DishDetail from '../components/DishDetail';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { AppState } from '../redux/configureStore';
+import Loading from '../components/Loading';
+import ErrorText from '../components/ErrorText';
 
-type Props = {
-    dishes: Dish[],
-    comments: Comment[]
-};
+export default function Menu() {
 
-export default function Menu({ dishes, comments }: Props) {
+    const dishes = useSelector((state: AppState) =>
+        state.dishState.dishes
+    );
 
-    const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
+    const dishLoading = useSelector((state: AppState) =>
+        state.dishState.isLoading
+    );
+    const dishError = useSelector((state: AppState) =>
+        state.dishState.errorMessage
+    );
+
 
     const menu = dishes.map((dish) => {
 
         return (
             <DishCard
                 key={ dish.id }
-                dish={ dish }
-                onItemClick={ () => setSelectedDish(dish) } />
+                dish={ dish } />
         );
     });
 
-    const commentsOfSelectedDish = comments.filter(comment =>
-        comment.dishId === selectedDish?.id
-    );
-
-
-    return (
-        <div className="container">
-            <div className="row">
-                <Breadcrumb>
-                    <BreadcrumbItem>
-                        <Link to="/">Home</Link>
+    if (dishLoading) {
+        return <Loading />
+    } else if (dishError) {
+        return <ErrorText errorMessage={ dishError } />
+    } else if (dishes) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem>
+                            <Link to="/">Home</Link>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem active>
+                            Menu
                     </BreadcrumbItem>
-                    <BreadcrumbItem active>
-                        Menu
-                    </BreadcrumbItem>
-                </Breadcrumb>
+                    </Breadcrumb>
+                </div>
+                <div className="row">
+                    { menu }
+                </div>
             </div>
-            <div className="row">
-                { menu }
-            </div>
-            <div className="row">
-                <DishDetail
-                    dish={ selectedDish }
-                    comments={ commentsOfSelectedDish } />
-            </div>
-        </div>
-    )
+        )
+    } else {
+        return (<div></div>)
+    }
 }

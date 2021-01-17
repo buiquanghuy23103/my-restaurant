@@ -1,14 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import LeaderInfo from '../components/LeaderInfo';
-import { Leader } from '../shared/types';
+import { AppState } from '../redux/configureStore';
 
-type Props = {
-    leaders: Leader[]
-}
 
-export default function About({ leaders }: Props) {
+export default function About() {
+
+    const leaders = useSelector((state: AppState) =>
+        state.leaders
+    );
 
     const leaderNames = leaders.map(leader => {
         return (
