@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import DishDetail from './components/DishDetail';
 import Footer from './components/Footer';
@@ -8,7 +8,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import { AppStore } from './redux/configureStore';
+import { AppState } from './redux/configureStore';
+import { fetchDishes } from './redux/dish/dishActions';
 
 type UrlParams = {
   dishId: string,
@@ -18,10 +19,13 @@ export default function App() {
 
   const match = useRouteMatch<UrlParams>("/menu/:dishId");
 
-  const dishes = useSelector((state: AppStore) => state.dishes);
-  const promotions = useSelector((state: AppStore) => state.promotions);
-  const leaders = useSelector((state: AppStore) => state.leaders);
-  const comments = useSelector((state: AppStore) => state.comments);
+
+  const dispatch = useDispatch();
+
+  const dishes = useSelector((state: AppState) => state.dishState.dishes);
+  const promotions = useSelector((state: AppState) => state.promotions);
+  const leaders = useSelector((state: AppState) => state.leaders);
+  const comments = useSelector((state: AppState) => state.comments);
 
   const oneFeaturedDish = dishes.find(dish => dish.featured);
   const oneFeaturedPromotion = promotions.find(promotion => promotion.featured);
@@ -38,6 +42,10 @@ export default function App() {
     if (!dishId) return [];
     return comments.filter(comment => comment.dishId === parseInt(dishId));
   }
+
+  useEffect(() => {
+    dispatch(fetchDishes());
+  }, [])
 
   return (
     <div>
