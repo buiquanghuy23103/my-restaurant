@@ -24,8 +24,7 @@ interface InitCommentsAction {
 }
 
 interface LoadCommentAction {
-    type: typeof LOAD_COMMENT,
-    isLoading: boolean
+    type: typeof LOAD_COMMENT
 }
 
 interface FailCommentAction {

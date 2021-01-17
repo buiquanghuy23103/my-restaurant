@@ -1,5 +1,5 @@
 import { Comment } from "../../shared/types";
-import { ADD_COMMENT, CommentActionTypes } from "./commentActionTypes";
+import { ADD_COMMENT, CommentActionTypes, FAIL_COMMENT, INIT_COMMENTS, LOAD_COMMENT } from "./commentActionTypes";
 
 type CommentParams = {
     rating: number,
@@ -26,5 +26,25 @@ export function addComment(params: CommentParams): CommentActionTypes {
     return {
         type: ADD_COMMENT,
         payload: createNewComment(params)
+    }
+}
+
+export function initComments(comments: Comment[]): CommentActionTypes {
+    return {
+        type: INIT_COMMENTS,
+        payload: comments
+    }
+}
+
+export function failComment(errorMessage: string): CommentActionTypes {
+    return {
+        type: FAIL_COMMENT,
+        errorMessage: errorMessage
+    }
+}
+
+export function loadComment(): CommentActionTypes {
+    return {
+        type: LOAD_COMMENT
     }
 }
