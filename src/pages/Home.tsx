@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import HomeCard from '../components/HomeCard';
+import Loading from '../components/Loading';
 import { AppState } from '../redux/configureStore';
 
 export default function Home() {
@@ -8,6 +9,11 @@ export default function Home() {
     const dish = useSelector((state: AppState) =>
         state.dishState.dishes.find(dish => dish.featured)
     );
+
+    const dishLoading = useSelector((state: AppState) =>
+        state.dishState.isLoading
+    );
+
 
     const leader = useSelector((state: AppState) =>
         state.leaders.find(leader => leader.featured)
@@ -17,6 +23,7 @@ export default function Home() {
         state.promotions.find(promotion => promotion.featured)
     );
 
+    if (dishLoading) return <Loading />
 
     return (
         <div className="container">

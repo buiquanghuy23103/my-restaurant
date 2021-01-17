@@ -8,7 +8,6 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import { AppState } from './redux/configureStore';
 import { fetchDishes } from './redux/dish/dishActions';
 
 
@@ -16,12 +15,6 @@ export default function App() {
 
 
   const dispatch = useDispatch();
-
-  const dishes = useSelector((state: AppState) => state.dishState.dishes);
-  const leaders = useSelector((state: AppState) => state.leaders);
-  const comments = useSelector((state: AppState) => state.comments);
-
-
 
 
   useEffect(() => {
