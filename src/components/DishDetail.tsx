@@ -1,6 +1,7 @@
-import React from 'react';
-import { Card, CardBody, CardImg, CardText, CardTitle } from 'reactstrap';
+import React, { useState } from 'react';
+import { Button, Card, CardBody, CardImg, CardText, CardTitle, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { Comment, Dish } from '../shared/types';
+import CommentForm from './CommentForm';
 import UserCommentList from './UserCommentList';
 
 type Props = {
@@ -9,6 +10,13 @@ type Props = {
 };
 
 export default function DishDetail({ dish, comments }: Props) {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    function toggleModal() {
+        setIsModalOpen(!isModalOpen);
+    }
 
     if (!dish) {
         return (<div></div>);
@@ -27,7 +35,20 @@ export default function DishDetail({ dish, comments }: Props) {
                 </Card>
 
             </div>
-            <UserCommentList comments={ comments } />
+            <div className="col">
+
+                <UserCommentList comments={ comments } />
+                <Button outline onClick={ toggleModal }>
+                    <span className="fa fa-sign-in fa-lg"></span>
+                    Submit Comment
+            </Button>
+            </div>
+            <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
+                <ModalHeader toggle={ toggleModal }>Submit Comment</ModalHeader>
+                <ModalBody>
+                    <CommentForm />
+                </ModalBody>
+            </Modal>
         </div>
     )
 }
