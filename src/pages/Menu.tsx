@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Dish } from '../shared/types';
+import React from 'react';
 import DishCard from '../components/DishCard';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';

@@ -54,9 +54,7 @@ export default function App() {
 
 
         <Route exact path="/aboutus">
-          <About
-            leaders={ leaders }
-          />
+          <About />
         </Route>
 
 
