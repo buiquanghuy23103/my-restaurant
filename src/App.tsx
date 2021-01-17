@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
-import DishDetail from './components/DishDetail';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import DishDetail from './pages/DishDetail';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import About from './pages/About';

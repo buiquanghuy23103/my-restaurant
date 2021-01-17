@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import { Button, Card, CardBody, CardImg, CardText, CardTitle, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { AppState } from '../redux/configureStore';
-import CommentForm from './CommentForm';
-import ErrorText from './ErrorText';
-import Loading from './Loading';
-import UserCommentList from './UserCommentList';
+import ErrorText from '../components/ErrorText';
+import Loading from '../components/Loading';
+import UserCommentList from '../components/UserCommentList';
+import CommentForm from '../components/CommentForm';
 
 type UrlParams = {
     dishId: string,
