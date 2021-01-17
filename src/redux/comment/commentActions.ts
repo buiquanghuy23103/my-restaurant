@@ -1,5 +1,18 @@
 import { Comment } from "../../shared/types";
+import { AppThunk } from "../configureStore";
+import axios from 'axios';
+
 import { ADD_COMMENT, CommentActionTypes, FAIL_COMMENT, INIT_COMMENTS, LOAD_COMMENT } from "./commentActionTypes";
+import { BASE_URL } from "../../shared/baseUrl";
+
+
+export const fetchComments = (): AppThunk => async (dispatch) => {
+    dispatch(loadComment());
+
+    return axios.get(BASE_URL + "comments")
+        .then(res => dispatch(initComments(res.data)))
+        .catch(err => console.log(err));
+}
 
 type CommentParams = {
     rating: number,

@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import DishDetail from './pages/DishDetail';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
+import { fetchComments } from './redux/comment/commentActions';
 import { fetchDishes } from './redux/dish/dishActions';
 import { fetchLeaders } from './redux/leader/leaderActions';
 
@@ -21,6 +22,7 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchDishes());
     dispatch(fetchLeaders());
+    dispatch(fetchComments());
   }, []);
 
   return (
