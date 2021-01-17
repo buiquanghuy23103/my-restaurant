@@ -8,7 +8,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import { AppStore } from './redux/reducer';
+import { AppStore } from './redux/configureStore';
 
 type UrlParams = {
   dishId: string,
