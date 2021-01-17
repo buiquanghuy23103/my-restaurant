@@ -23,13 +23,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   const dishes = useSelector((state: AppState) => state.dishState.dishes);
-  const promotions = useSelector((state: AppState) => state.promotions);
   const leaders = useSelector((state: AppState) => state.leaders);
   const comments = useSelector((state: AppState) => state.comments);
-
-  const oneFeaturedDish = dishes.find(dish => dish.featured);
-  const oneFeaturedPromotion = promotions.find(promotion => promotion.featured);
-  const oneFeaturedLeader = leaders.find(leader => leader.featured);
 
   function selectedDish() {
     const dishId = match?.params.dishId;
@@ -45,7 +40,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchDishes());
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -54,11 +49,7 @@ export default function App() {
 
 
         <Route exact path="/">
-          <Home
-            dish={ oneFeaturedDish }
-            promotion={ oneFeaturedPromotion }
-            leader={ oneFeaturedLeader }
-          />
+          <Home />
         </Route>
 
 

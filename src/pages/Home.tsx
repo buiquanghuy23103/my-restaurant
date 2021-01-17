@@ -1,14 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import HomeCard from '../components/HomeCard';
-import { Dish, Leader, Promotion } from '../shared/types';
+import { AppState } from '../redux/configureStore';
 
-type Props = {
-    dish: Dish | undefined,
-    promotion: Promotion | undefined,
-    leader: Leader | undefined
-}
+export default function Home() {
 
-export default function Home({ dish, promotion, leader }: Props) {
+    const dish = useSelector((state: AppState) =>
+        state.dishState.dishes.find(dish => dish.featured)
+    );
+
+    const leader = useSelector((state: AppState) =>
+        state.leaders.find(leader => leader.featured)
+    );
+
+    const promotion = useSelector((state: AppState) =>
+        state.promotions.find(promotion => promotion.featured)
+    );
+
+
     return (
         <div className="container">
             <div className="row align-items-start">
