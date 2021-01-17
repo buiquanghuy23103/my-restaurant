@@ -11,7 +11,7 @@ interface AddDishAction {
     payload: Dish
 }
 
-interface AddDishesAction {
+interface InitDishesAction {
     type: typeof INIT_DISHES,
     payload: Dish[]
 }
@@ -38,4 +38,4 @@ export type DishActionTypes =
     | RemoveDishAction
     | LoadDishAction
     | FailDishAction
-    | AddDishesAction
+    | InitDishesAction
