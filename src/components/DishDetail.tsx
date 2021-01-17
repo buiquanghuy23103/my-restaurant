@@ -4,6 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { Button, Card, CardBody, CardImg, CardText, CardTitle, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { AppState } from '../redux/configureStore';
 import CommentForm from './CommentForm';
+import ErrorText from './ErrorText';
 import Loading from './Loading';
 import UserCommentList from './UserCommentList';
 
@@ -18,6 +19,8 @@ export default function DishDetail() {
 
     const dishes = useSelector((state: AppState) => state.dishState.dishes);
     const dishLoading = useSelector((state: AppState) => state.dishState.isLoading);
+    const dishError = useSelector((state: AppState) => state.dishState.errorMessage);
+
     const comments = useSelector((state: AppState) => state.comments);
 
     const dish = selectedDish();
@@ -44,39 +47,42 @@ export default function DishDetail() {
         setIsModalOpen(!isModalOpen);
     }
 
-    if (dishLoading) return <Loading />
+    if (dishLoading) {
+        return <Loading />
+    } else if (dishError) {
+        return <ErrorText errorMessage={ dishError } />
+    } else if (dish) {
+        return (
+            <div className="row">
+                <div className="col-12 col-md-5 m-1">
+                    <Card>
+                        <CardImg width="100%" src={ dish.image } alt={ dish.name } />
+                        <CardBody>
+                            <CardTitle>{ dish.name }</CardTitle>
+                            <CardText>{ dish.description }</CardText>
+                        </CardBody>
 
-    if (!dish) {
+                    </Card>
+
+                </div>
+                <div className="col">
+
+                    <UserCommentList comments={ commentOfCurrentDish } />
+                    <Button outline onClick={ toggleModal }>
+                        <span className="fa fa-sign-in fa-lg"></span>
+                        Submit Comment
+                </Button>
+                </div>
+                <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
+                    <ModalHeader toggle={ toggleModal }>Submit Comment</ModalHeader>
+                    <ModalBody>
+                        <CommentForm dishId={ dish.id } />
+                    </ModalBody>
+                </Modal>
+            </div>
+        )
+    } else {
         return (<div></div>);
     }
 
-    return (
-        <div className="row">
-            <div className="col-12 col-md-5 m-1">
-                <Card>
-                    <CardImg width="100%" src={ dish.image } alt={ dish.name } />
-                    <CardBody>
-                        <CardTitle>{ dish.name }</CardTitle>
-                        <CardText>{ dish.description }</CardText>
-                    </CardBody>
-
-                </Card>
-
-            </div>
-            <div className="col">
-
-                <UserCommentList comments={ commentOfCurrentDish } />
-                <Button outline onClick={ toggleModal }>
-                    <span className="fa fa-sign-in fa-lg"></span>
-                    Submit Comment
-            </Button>
-            </div>
-            <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
-                <ModalHeader toggle={ toggleModal }>Submit Comment</ModalHeader>
-                <ModalBody>
-                    <CommentForm dishId={ dish.id } />
-                </ModalBody>
-            </Modal>
-        </div>
-    )
 }
