@@ -6,6 +6,17 @@ import { ADD_COMMENT, CommentActionTypes, FAIL_COMMENT, INIT_COMMENTS, LOAD_COMM
 import { BASE_URL } from "../../shared/baseUrl";
 
 
+export const postComment = (commentParams: CommentParams): AppThunk => async (dispatch) => {
+    const newComment = createNewComment(commentParams);
+
+    return axios.post(
+        BASE_URL + "comments",
+        newComment
+    )
+        .then(res => dispatch(addComment(res.data)))
+        .catch(err => dispatch(failComment(err.message)));
+}
+
 export const fetchComments = (): AppThunk => async (dispatch) => {
     dispatch(loadComment());
 

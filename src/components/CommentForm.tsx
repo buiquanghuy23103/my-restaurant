@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addComment } from '../redux/comment/commentActions';
+import { postComment } from '../redux/comment/commentActions';
 
 
 enum FormFields {
@@ -20,7 +20,7 @@ export default function CommentForm({ dishId }: Props): JSX.Element {
 
     function addCommentFromForm(values: { name: string, comment: string }) {
         dispatch(
-            addComment({
+            postComment({
                 comment: values.comment,
                 rating: 3,
                 author: values.name,
