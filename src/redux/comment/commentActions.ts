@@ -11,7 +11,7 @@ export const fetchComments = (): AppThunk => async (dispatch) => {
 
     return axios.get(BASE_URL + "comments")
         .then(res => dispatch(initComments(res.data)))
-        .catch(err => console.log(err));
+        .catch(err => dispatch(failComment(JSON.stringify(err))));
 }
 
 type CommentParams = {
