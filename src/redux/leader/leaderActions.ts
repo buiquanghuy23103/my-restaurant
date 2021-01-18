@@ -10,7 +10,7 @@ export const fetchLeaders = (): AppThunk => async (dispatch) => {
 
     return axios.get<Leader[]>(BASE_URL + "leaders")
         .then(res => dispatch(initLeader(res.data)))
-        .catch(err => dispatch(failLeader(JSON.stringify(err))));
+        .catch(err => dispatch(failLeader(err.message)));
 }
 
 export function loadLeader(): LeaderActionTypes {

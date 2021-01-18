@@ -10,7 +10,7 @@ export const fetchPromotions = (): AppThunk => async (dispatch) => {
 
     return axios.get(BASE_URL + "promotions")
         .then(res => dispatch(initPromotions(res.data)))
-        .catch(err => dispatch(failPromotion(JSON.stringify(err))));
+        .catch(err => dispatch(failPromotion(err.message)));
 
 }
 

@@ -9,7 +9,7 @@ export const fetchDishes = (): AppThunk => async (dispatch) => {
 
     return axios.get<Dish[]>(BASE_URL + "dishes")
         .then(res => dispatch(initDishes(res.data)))
-        .catch(err => dispatch(failDish(JSON.stringify(err))));
+        .catch(err => dispatch(failDish(err.message)));
 
 
 }
