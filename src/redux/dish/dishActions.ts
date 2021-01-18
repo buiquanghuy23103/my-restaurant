@@ -1,14 +1,17 @@
-import { DISHES } from "../../shared/dishes";
-import { Dish } from "../../shared/types";
 import { AppThunk } from "../configureStore"
 import { INIT_DISHES, DishActionTypes, FAIL_DISH, LOAD_DISH } from "./dishActionTypes"
+import { Dish } from "./dishTypes";
+import axios from 'axios';
+import { BASE_URL } from "../../shared/baseUrl";
 
 export const fetchDishes = (): AppThunk => async (dispatch) => {
     dispatch(loadDish(true));
 
-    setTimeout(() => {
-        dispatch(addDishes(DISHES));
-    }, 2000);
+    return axios.get<Dish[]>(BASE_URL + "dishes")
+        .then(res => dispatch(initDishes(res.data)))
+        .catch(err => dispatch(failDish(err.message)));
+
+
 }
 
 export function loadDish(isLoading: boolean): DishActionTypes {
@@ -18,7 +21,7 @@ export function loadDish(isLoading: boolean): DishActionTypes {
     }
 }
 
-export function addDishes(dishes: Dish[]): DishActionTypes {
+export function initDishes(dishes: Dish[]): DishActionTypes {
     return {
         type: INIT_DISHES,
         payload: dishes

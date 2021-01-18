@@ -1,4 +1,4 @@
-import { Dish } from "../../shared/types";
+import { Dish } from "./dishTypes";
 
 export const ADD_DISH = "ADD_DISH";
 export const INIT_DISHES = "INIT_DISHES";
@@ -11,7 +11,7 @@ interface AddDishAction {
     payload: Dish
 }
 
-interface AddDishesAction {
+interface InitDishesAction {
     type: typeof INIT_DISHES,
     payload: Dish[]
 }
@@ -38,4 +38,4 @@ export type DishActionTypes =
     | RemoveDishAction
     | LoadDishAction
     | FailDishAction
-    | AddDishesAction
+    | InitDishesAction

@@ -7,10 +7,10 @@ import thunk, { ThunkAction } from 'redux-thunk';
 import logger from 'redux-logger';
 
 const appReducer = combineReducers({
-    leaders: leaderReducer,
+    leaderState: leaderReducer,
     dishState: dishReducer,
-    promotions: promotionReducer,
-    comments: commentReducer
+    promotionState: promotionReducer,
+    commentState: commentReducer
 });
 
 const middleWare = applyMiddleware(thunk, logger);
