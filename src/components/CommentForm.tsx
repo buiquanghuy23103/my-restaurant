@@ -11,10 +11,11 @@ enum FormFields {
 }
 
 type Props = {
-    dishId: number
+    dishId: number,
+    toggleModal: () => void
 }
 
-export default function CommentForm({ dishId }: Props): JSX.Element {
+export default function CommentForm({ dishId, toggleModal }: Props): JSX.Element {
 
     const dispatch = useDispatch();
 
@@ -37,7 +38,8 @@ export default function CommentForm({ dishId }: Props): JSX.Element {
             } }
             validateOnChange
             onSubmit={ (values, formikBag) => {
-                addCommentFromForm(values)
+                toggleModal();
+                addCommentFromForm(values);
             } }
             validationSchema={
                 Yup.object({
