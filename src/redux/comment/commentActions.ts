@@ -1,4 +1,4 @@
-import { Comment } from "../../shared/types";
+import { Comment } from './commentTypes';
 import { AppThunk } from "../configureStore";
 import axios from 'axios';
 

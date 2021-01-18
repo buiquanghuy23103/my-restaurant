@@ -1,4 +1,4 @@
-import { Leader } from "../../shared/types";
+import { Leader } from "./leaderTypes";
 import { AppThunk } from "../configureStore";
 import { FAIL_LEADER, INIT_LEADER, LeaderActionTypes, LOAD_LEADER } from "./leaderActionTypes";
 import axios from 'axios';

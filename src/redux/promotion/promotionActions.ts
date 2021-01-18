@@ -1,8 +1,8 @@
-import { Promotion } from "../../shared/types";
 import { AppThunk } from "../configureStore";
 import { FAIL_PROMOTION, INIT_PROMOTION, LOAD_PROMOTION, PromotionActionType } from "./promotionActionTypes";
 import axios from 'axios';
 import { BASE_URL } from "../../shared/baseUrl";
+import { Promotion } from "./promotionTypes";
 
 
 export const fetchPromotions = (): AppThunk => async (dispatch) => {

@@ -1,4 +1,4 @@
-import { Leader } from "../../shared/types";
+import { Leader } from "./leaderTypes";
 
 export const INIT_LEADER = "INIT_LEADER";
 export const LOAD_LEADER = "LOAD_LEADER";

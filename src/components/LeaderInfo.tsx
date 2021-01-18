@@ -1,7 +1,7 @@
 import React from 'react';
 import { Media } from 'reactstrap';
+import { Leader } from '../redux/leader/leaderTypes';
 import { BASE_URL } from '../shared/baseUrl';
-import { Leader } from '../shared/types';
 
 type Props = {
     leader: Leader

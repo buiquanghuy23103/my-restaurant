@@ -1,4 +1,3 @@
-import { DISHES } from "../../shared/dishes";
 import { AppThunk } from "../configureStore"
 import { INIT_DISHES, DishActionTypes, FAIL_DISH, LOAD_DISH } from "./dishActionTypes"
 import { Dish } from "./dishTypes";

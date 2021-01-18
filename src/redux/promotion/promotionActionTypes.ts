@@ -1,4 +1,4 @@
-import { Promotion } from "../../shared/types";
+import { Promotion } from "./promotionTypes";
 
 export const INIT_PROMOTION = "INIT_PROMOTION";
 export const LOAD_PROMOTION = "LOAD_PROMOTION";

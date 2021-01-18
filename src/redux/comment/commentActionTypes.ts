@@ -1,4 +1,4 @@
-import { Comment } from "../../shared/types";
+import { Comment } from "./commentTypes";
 
 export const ADD_COMMENT = "ADD_COMMENT";
 export const INIT_COMMENTS = "INIT_COMMENTS";

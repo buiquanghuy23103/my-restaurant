@@ -1,5 +1,5 @@
 import React from 'react';
-import { Comment } from '../shared/types';
+import { Comment } from '../redux/comment/commentTypes';
 import convertToFormattedDateString from '../utils/DateUtil';
 
 

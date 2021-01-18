@@ -1,6 +1,7 @@
 import React from 'react'
-import { Comment } from '../shared/types';
 import UserComment from './UserComment';
+import { Comment } from '../redux/comment/commentTypes';
+
 
 type Props = {
     comments: Comment[]
