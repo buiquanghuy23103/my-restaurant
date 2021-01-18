@@ -25,7 +25,7 @@ export default function Home() {
     );
 
     const promotion = useSelector((state: AppState) =>
-        state.promotions.find(promotion => promotion.featured)
+        state.promotionState.promotions.find(promotion => promotion.featured)
     );
 
     if (dishLoading) {

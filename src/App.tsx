@@ -11,6 +11,7 @@ import Menu from './pages/Menu';
 import { fetchComments } from './redux/comment/commentActions';
 import { fetchDishes } from './redux/dish/dishActions';
 import { fetchLeaders } from './redux/leader/leaderActions';
+import { fetchPromotions } from './redux/promotion/promotionActions';
 
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
     dispatch(fetchDishes());
     dispatch(fetchLeaders());
     dispatch(fetchComments());
+    dispatch(fetchPromotions());
   }, []);
 
   return (

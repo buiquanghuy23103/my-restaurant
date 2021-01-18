@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 const appReducer = combineReducers({
     leaderState: leaderReducer,
     dishState: dishReducer,
-    promotions: promotionReducer,
+    promotionState: promotionReducer,
     commentState: commentReducer
 });
 

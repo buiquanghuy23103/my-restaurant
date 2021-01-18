@@ -1,18 +1,25 @@
 import { Promotion } from "../../shared/types";
 
-export const ADD_PROMOTION = "ADD_PROMOTION";
-export const REMOVE_PROMOTION = "REMOVE_PROMOTION";
+export const INIT_PROMOTION = "INIT_PROMOTION";
+export const LOAD_PROMOTION = "LOAD_PROMOTION";
+export const FAIL_PROMOTION = "FAIL_PROMOTION";
 
-interface AddPromotionAction {
-    type: typeof ADD_PROMOTION,
-    payload: Promotion
+interface InitPromotionAction {
+    type: typeof INIT_PROMOTION,
+    payload: Promotion[]
 }
 
-interface RemovePromotionAction {
-    type: typeof REMOVE_PROMOTION,
-    meta: {
-        timestamp: number
-    }
+interface LoadPromotionAction {
+    type: typeof LOAD_PROMOTION,
+
 }
 
-export type PromotionActionType = AddPromotionAction | RemovePromotionAction
+interface FailPromotionAction {
+    type: typeof FAIL_PROMOTION,
+    errorMessage: string
+}
+
+export type PromotionActionType =
+    InitPromotionAction
+    | LoadPromotionAction
+    | FailPromotionAction
