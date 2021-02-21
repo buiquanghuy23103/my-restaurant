@@ -13,9 +13,21 @@ code {
 }
 
 .header-background {
-  background: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background: url('https://images.unsplash.com/photo-1464195643332-1f236b1c2255?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80');
+  background-position-y: 40%;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   min-height: 700px;
+}
+
+.navbar
+{
+    /* Example with a black tint and 0.5 opacity. */
+    background-color: rgba(0,0,0,0.5);
+    /* RGB of 0,0,0 is black. */
+}
+
+.home-inner {
+  padding-top: 150px;
 }

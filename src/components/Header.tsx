@@ -19,7 +19,7 @@ export default function Header() {
 
     return (
         <React.Fragment>
-            <Navbar dark expand="md">
+            <Navbar fixed="top" dark expand="md" className="navbar-transparent">
                 <div className="container">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
@@ -76,16 +76,16 @@ export default function Header() {
                     </Collapse>
                 </div>
             </Navbar>
-            <Jumbotron className="header-background">
-                <div className="container">
-                    <div className="row row-header">
-                        <div className="col-12 col-sm-6">
+            <header className="header-background py-5">
+                <div className="container home-inner">
+                    <div className="row row-header justify-content-center">
+                        <div className="col-12 col-sm-6 text-center text-white">
                             <h1>Ristorante Con Fusion</h1>
                             <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
                         </div>
                     </div>
                 </div>
-            </Jumbotron>
+            </header>
             <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
                 <ModalHeader toggle={ toggleModal }>Login</ModalHeader>
                 <ModalBody>
