@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Button, Collapse, Jumbotron, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
 import LoginForm from './LoginForm';
+import '../index.css'
 
 export default function Header() {
 
@@ -75,7 +76,7 @@ export default function Header() {
                     </Collapse>
                 </div>
             </Navbar>
-            <Jumbotron>
+            <Jumbotron className="header-background">
                 <div className="container">
                     <div className="row row-header">
                         <div className="col-12 col-sm-6">
