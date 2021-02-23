@@ -11,16 +11,12 @@ export default function Header() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const scrollPosition = useScroll();
 
-    function shouldChangeToLightNavbar() {
+    function isUserScrollingDown() {
         if (shouldCollapse) return true;
         if (scrollPosition) {
             return scrollPosition >= 50;
         }
         return false;
-    }
-
-    function getNavlinkColor() {
-        return shouldChangeToLightNavbar() ? 'black' : 'white';
     }
 
     function toggleNav() {
@@ -34,19 +30,19 @@ export default function Header() {
     return (
         <React.Fragment>
             <Navbar fixed="top" expand="md"
-                dark={ !shouldChangeToLightNavbar() }
-                light={ shouldChangeToLightNavbar() }
+                dark
                 style={ {
-                    backgroundColor: shouldChangeToLightNavbar() ? 'white' : 'transparent'
+                    backgroundColor: isUserScrollingDown() ? '#000' : 'transparent',
+                    opacity: 0.8
                 } }>
                 <div className="container py-2">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
                         href="/"
-                        className="mr-3"
+                        className="mr-3 text-white"
                         style={ {
                             fontFamily: 'Brush Script MT',
-                            fontSize: 25
+                            fontSize: 40
                         } }>
                         Ristorante
                     </NavbarBrand>
@@ -54,9 +50,8 @@ export default function Header() {
                         <Nav navbar>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
                                     activeClassName="text-warning"
-                                    style={ { color: getNavlinkColor() } }
                                     exact
                                     to="/">
                                     Home
@@ -64,27 +59,24 @@ export default function Header() {
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
                                     activeClassName="text-warning"
-                                    style={ { color: getNavlinkColor() } }
                                     to="/aboutus">
                                     About us
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
                                     activeClassName="text-warning"
-                                    style={ { color: getNavlinkColor() } }
                                     to="/menu">
                                     Menu
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
                                     activeClassName="text-warning"
-                                    style={ { color: getNavlinkColor() } }
                                     to="/contactus">
                                     Contact us
                                 </NavLink>
@@ -92,7 +84,7 @@ export default function Header() {
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button color={ shouldChangeToLightNavbar() ? 'dark' : 'light' }
+                                <Button color='light'
                                     outline
                                     onClick={ toggleModal }>
                                     Login
