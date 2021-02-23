@@ -38,7 +38,7 @@ export default function Header() {
                 style={ {
                     backgroundColor: isUserScrollingFromTop() ? 'white' : 'transparent'
                 } }>
-                <div className="container">
+                <div className="container py-2">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
                         href="/"
@@ -91,8 +91,10 @@ export default function Header() {
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button color="light" outline onClick={ toggleModal }>
-                                    <span className="fa fa-sign-in fa-lg"></span> Login
+                                <Button color={ isUserScrollingFromTop() ? 'dark' : 'light' }
+                                    outline
+                                    onClick={ toggleModal }>
+                                    Login
                                 </Button>
                             </NavItem>
                         </Nav>

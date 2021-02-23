@@ -21,6 +21,9 @@ code {
   min-height: 700px;
 }
 
+.nav-link {
+  font-size: small;
+}
 
 .home-inner {
   padding-top: 150px;
