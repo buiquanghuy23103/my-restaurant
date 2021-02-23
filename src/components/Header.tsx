@@ -19,14 +19,14 @@ export default function Header() {
 
     return (
         <React.Fragment>
-            <Navbar fixed="top" dark expand="md" className="navbar-transparent">
+            <Navbar fixed="top" dark expand="md">
                 <div className="container">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
                         href="/"
                         className="mr-auto">
                         <img
-                            src="../logo.svg"
+                            src="assets/images/logo.png"
                             height="30"
                             width="41"
                             alt="Ristorante Con Fusion" />
@@ -35,40 +35,40 @@ export default function Header() {
                         <Nav navbar>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-white text-uppercase font-weight-bold"
+                                    activeClassName="text-warning"
                                     to="/">
-                                    <span className="fa fa-home fa-lg" />
-                                Home
-                            </NavLink>
+                                    Home
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
                                     to="/aboutus">
-                                    <span className="fa fa-info fa-lg" />
-                                About us
-                            </NavLink>
+                                    About us
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
                                     to="/menu">
-                                    <span className="fa fa-list fa-lg" />
-                                Menu
-                            </NavLink>
+                                    Menu
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
                                     to="/contactus">
-                                    <span className="fa fa-list fa-lg" />
-                                Contact us
-                            </NavLink>
+                                    Contact us
+                                </NavLink>
                             </NavItem>
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button outline onClick={ toggleModal }>
+                                <Button color="light" outline onClick={ toggleModal }>
                                     <span className="fa fa-sign-in fa-lg"></span> Login
                                 </Button>
                             </NavItem>
