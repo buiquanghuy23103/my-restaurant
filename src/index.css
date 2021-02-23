@@ -21,23 +21,6 @@ code {
   min-height: 700px;
 }
 
-.navbar
-{
-    background-color: transparent;
-}
-
-.nav-link { 
-  color: white; 
-} 
-
-.nav-item>a:hover { 
-  color: orange; 
-} 
-
-/*code to change background color*/ 
-.navbar-nav>.active>a { 
-  color: orange; 
-} 
 
 .home-inner {
   padding-top: 150px;

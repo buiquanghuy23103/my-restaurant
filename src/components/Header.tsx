@@ -3,15 +3,24 @@ import { NavLink } from 'react-router-dom'
 import { Button, Collapse, Jumbotron, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
 import LoginForm from './LoginForm';
 import '../index.css'
+import useScroll from '../hooks/useScroll';
 
 export default function Header() {
 
     const [shouldCollapse, setShouldCollapse] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const scrollPosition = useScroll();
 
-    console.log("Offset height: ", document.body.offsetHeight);
-    console.log("Window inner height: ", window.innerHeight);
+    function isUserScrollingFromTop() {
+        if (scrollPosition) {
+            return scrollPosition >= 50;
+        }
+        return false;
+    }
 
+    function getNavlinkColor() {
+        return isUserScrollingFromTop() ? 'black' : 'white';
+    }
 
     function toggleNav() {
         setShouldCollapse(!shouldCollapse);
@@ -23,7 +32,12 @@ export default function Header() {
 
     return (
         <React.Fragment>
-            <Navbar fixed="top" dark expand="md">
+            <Navbar fixed="top" expand="md"
+                dark={ !isUserScrollingFromTop() }
+                light={ isUserScrollingFromTop() }
+                style={ {
+                    backgroundColor: isUserScrollingFromTop() ? 'white' : 'transparent'
+                } }>
                 <div className="container">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
@@ -39,8 +53,9 @@ export default function Header() {
                         <Nav navbar>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-white text-uppercase font-weight-bold"
+                                    className="nav-link text-uppercase font-weight-bold"
                                     activeClassName="text-warning"
+                                    style={ { color: getNavlinkColor() } }
                                     exact
                                     to="/">
                                     Home
@@ -48,24 +63,27 @@ export default function Header() {
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    className="nav-link text-uppercase font-weight-bold"
                                     activeClassName="text-warning"
+                                    style={ { color: getNavlinkColor() } }
                                     to="/aboutus">
                                     About us
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    className="nav-link text-uppercase font-weight-bold"
                                     activeClassName="text-warning"
+                                    style={ { color: getNavlinkColor() } }
                                     to="/menu">
                                     Menu
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    className="nav-link text-uppercase font-weight-bold"
                                     activeClassName="text-warning"
+                                    style={ { color: getNavlinkColor() } }
                                     to="/contactus">
                                     Contact us
                                 </NavLink>
