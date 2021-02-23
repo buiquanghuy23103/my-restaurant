@@ -37,6 +37,7 @@ export default function Header() {
                                 <NavLink
                                     className="nav-link text-white text-uppercase font-weight-bold"
                                     activeClassName="text-warning"
+                                    exact
                                     to="/">
                                     Home
                                 </NavLink>
