@@ -11,7 +11,8 @@ export default function Header() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const scrollPosition = useScroll();
 
-    function isUserScrollingFromTop() {
+    function shouldChangeToLightNavbar() {
+        if (shouldCollapse) return true;
         if (scrollPosition) {
             return scrollPosition >= 50;
         }
@@ -19,7 +20,7 @@ export default function Header() {
     }
 
     function getNavlinkColor() {
-        return isUserScrollingFromTop() ? 'black' : 'white';
+        return shouldChangeToLightNavbar() ? 'black' : 'white';
     }
 
     function toggleNav() {
@@ -33,10 +34,10 @@ export default function Header() {
     return (
         <React.Fragment>
             <Navbar fixed="top" expand="md"
-                dark={ !isUserScrollingFromTop() }
-                light={ isUserScrollingFromTop() }
+                dark={ !shouldChangeToLightNavbar() }
+                light={ shouldChangeToLightNavbar() }
                 style={ {
-                    backgroundColor: isUserScrollingFromTop() ? 'white' : 'transparent'
+                    backgroundColor: shouldChangeToLightNavbar() ? 'white' : 'transparent'
                 } }>
                 <div className="container py-2">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
@@ -91,7 +92,7 @@ export default function Header() {
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button color={ isUserScrollingFromTop() ? 'dark' : 'light' }
+                                <Button color={ shouldChangeToLightNavbar() ? 'dark' : 'light' }
                                     outline
                                     onClick={ toggleModal }>
                                     Login
