@@ -9,6 +9,10 @@ export default function Header() {
     const [shouldCollapse, setShouldCollapse] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    console.log("Offset height: ", document.body.offsetHeight);
+    console.log("Window inner height: ", window.innerHeight);
+
+
     function toggleNav() {
         setShouldCollapse(!shouldCollapse);
     }
@@ -77,7 +81,7 @@ export default function Header() {
                     </Collapse>
                 </div>
             </Navbar>
-            <header className="header-background py-5">
+            <header className="header-background py-5" style={ { height: window.innerHeight } }>
                 <div className="container home-inner">
                     <div className="row row-header justify-content-center">
                         <div className="col-12 col-sm-6 text-center text-white">
