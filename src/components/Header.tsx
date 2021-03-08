@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Button, Collapse, Jumbotron, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
+import { Button, Collapse, Modal, ModalBody, ModalHeader, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
 import LoginForm from './LoginForm';
+import '../index.css'
+import useScroll from '../hooks/useScroll';
 
 export default function Header() {
 
     const [shouldCollapse, setShouldCollapse] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const scrollPosition = useScroll();
+
+    function isUserScrollingDown() {
+        if (shouldCollapse) return true;
+        if (scrollPosition) {
+            return scrollPosition >= 50;
+        }
+        return false;
+    }
 
     function toggleNav() {
         setShouldCollapse(!shouldCollapse);
@@ -18,73 +29,81 @@ export default function Header() {
 
     return (
         <React.Fragment>
-            <Navbar dark expand="md">
-                <div className="container">
+            <Navbar fixed="top" expand="md"
+                dark
+                style={ {
+                    backgroundColor: isUserScrollingDown() ? '#000' : 'transparent',
+                    opacity: 0.8
+                } }>
+                <div className="container py-2">
                     <NavbarToggler onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
                         href="/"
-                        className="mr-auto">
-                        <img
-                            src="../logo.svg"
-                            height="30"
-                            width="41"
-                            alt="Ristorante Con Fusion" />
+                        className="mr-3 text-white"
+                        style={ {
+                            fontFamily: 'Brush Script MT',
+                            fontSize: 40
+                        } }>
+                        Ristorante
                     </NavbarBrand>
                     <Collapse isOpen={ shouldCollapse } navbar>
                         <Nav navbar>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
+                                    exact
                                     to="/">
-                                    <span className="fa fa-home fa-lg" />
-                                Home
-                            </NavLink>
+                                    Home
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
                                     to="/aboutus">
-                                    <span className="fa fa-info fa-lg" />
-                                About us
-                            </NavLink>
+                                    About us
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
                                     to="/menu">
-                                    <span className="fa fa-list fa-lg" />
-                                Menu
-                            </NavLink>
+                                    Menu
+                                </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink
-                                    className="nav-link"
+                                    className="nav-link text-uppercase font-weight-bold text-white"
+                                    activeClassName="text-warning"
                                     to="/contactus">
-                                    <span className="fa fa-list fa-lg" />
-                                Contact us
-                            </NavLink>
+                                    Contact us
+                                </NavLink>
                             </NavItem>
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button outline onClick={ toggleModal }>
-                                    <span className="fa fa-sign-in fa-lg"></span> Login
+                                <Button color='light'
+                                    outline
+                                    onClick={ toggleModal }>
+                                    Login
                                 </Button>
                             </NavItem>
                         </Nav>
                     </Collapse>
                 </div>
             </Navbar>
-            <Jumbotron>
-                <div className="container">
-                    <div className="row row-header">
-                        <div className="col-12 col-sm-6">
-                            <h1>Ristorante Con Fusion</h1>
+            <header className="header-background py-5" style={ { height: window.innerHeight } }>
+                <div className="container home-inner">
+                    <div className="row row-header justify-content-center">
+                        <div className="col-12 col-sm-6 text-center text-white">
+                            <h1 className="display-1" style={ { fontFamily: 'Brush Script MT' } }>Ristorante</h1>
                             <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
                         </div>
                     </div>
                 </div>
-            </Jumbotron>
+            </header>
             <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
                 <ModalHeader toggle={ toggleModal }>Login</ModalHeader>
                 <ModalBody>
