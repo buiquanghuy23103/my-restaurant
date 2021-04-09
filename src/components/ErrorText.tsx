@@ -6,9 +6,9 @@ type Props = {
 
 export default function ErrorText({ errorMessage }: Props) {
     return (
-        <div className="container">
+        <div className="container" data-test="component-error-text">
             <div className="row">
-                <h4>{ errorMessage }</h4>
+                <h4 data-test="error-message">{ errorMessage }</h4>
             </div>
         </div>
     )
