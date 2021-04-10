@@ -15,7 +15,7 @@ export default function DishCard({ dish }: Props) {
         <div data-test="component-dish-card" className="col-12 col-md-5 m-1">
             <Card>
                 <Link to={ `/menu/${dish.id}` } >
-                    <CardImg width="100%" src={ BASE_URL + dish.image } alt={ dish.name } />
+                    <CardImg data-test="dish-image" width="100%" src={ BASE_URL + dish.image } alt={ dish.name } />
                     <CardImgOverlay>
                         <CardTitle data-test="dish-name">{ dish.name }</CardTitle>
                     </CardImgOverlay>

@@ -1,5 +1,6 @@
 import { shallow } from "enzyme";
 import { Dish } from "../../redux/dish/dishTypes";
+import { BASE_URL } from "../../shared/baseUrl";
 import { findByTestAttr } from "../../testUtils/testUtils";
 import DishCard from "../DishCard";
 
@@ -26,9 +27,14 @@ test('should render without error', () => {
 
 test('should render dish name', () => {
     const wrapper = setup();
-    const dishName = findByTestAttr(wrapper, "dish-name").dive().text();
+    const dishName = (findByTestAttr(wrapper, "dish-name")).dive().text();
     expect(dishName).toBe(sampleDish.name);
 });
 
+test('should render image from the correct url', () => {
+    const wrapper = setup();
+    const dishImageSrc = findByTestAttr(wrapper, "dish-image").prop('src');
+    expect(dishImageSrc).toBe(BASE_URL + sampleDish.image);
+})
 
 
