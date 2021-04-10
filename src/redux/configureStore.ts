@@ -6,14 +6,14 @@ import promotionReducer from "./promotion/promotionReducer";
 import thunk, { ThunkAction } from 'redux-thunk';
 import logger from 'redux-logger';
 
-const appReducer = combineReducers({
+export const appReducer = combineReducers({
     leaderState: leaderReducer,
     dishState: dishReducer,
     promotionState: promotionReducer,
     commentState: commentReducer
 });
 
-const middleWare = applyMiddleware(thunk, logger);
+export const middleWare = applyMiddleware(thunk, logger);
 
 export type AppState = ReturnType<typeof appReducer>
 
