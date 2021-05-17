@@ -29,14 +29,18 @@ export default function Header() {
 
     return (
         <React.Fragment>
-            <Navbar fixed="top" expand="md"
+
+            <Navbar
+                data-test="component-header"
+                fixed="top"
+                expand="md"
                 dark
                 style={ {
                     backgroundColor: isUserScrollingDown() ? '#000' : 'transparent',
                     opacity: 0.8
                 } }>
                 <div className="container py-2">
-                    <NavbarToggler onClick={ toggleNav }></NavbarToggler>
+                    <NavbarToggler data-test="navbar-toggler" onClick={ toggleNav }></NavbarToggler>
                     <NavbarBrand
                         href="/"
                         className="mr-3 text-white"
@@ -46,7 +50,7 @@ export default function Header() {
                         } }>
                         Ristorante
                     </NavbarBrand>
-                    <Collapse isOpen={ shouldCollapse } navbar>
+                    <Collapse data-test="collapse" isOpen={ shouldCollapse } navbar>
                         <Nav navbar>
                             <NavItem>
                                 <NavLink
@@ -84,7 +88,9 @@ export default function Header() {
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button color='light'
+                                <Button
+                                    data-test="login-button"
+                                    color='light'
                                     outline
                                     onClick={ toggleModal }>
                                     Login
@@ -104,7 +110,7 @@ export default function Header() {
                     </div>
                 </div>
             </header>
-            <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
+            <Modal data-test="login-modal" isOpen={ isModalOpen } toggle={ toggleModal }>
                 <ModalHeader toggle={ toggleModal }>Login</ModalHeader>
                 <ModalBody>
                     <LoginForm />
