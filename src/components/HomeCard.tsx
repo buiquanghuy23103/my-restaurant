@@ -11,8 +11,8 @@ type Props = {
 
 export default function HomeCard({ image, name, designation, description }: Props) {
     return (
-        <Card>
-            <CardImg src={ BASE_URL + image } alt={ name } />
+        <Card data-test="component-home-card">
+            <CardImg data-test="card-image" src={ BASE_URL + image } alt={ name } />
             <CardBody>
                 <CardTitle>{ name }</CardTitle>
                 { designation && <CardSubtitle>{ designation }</CardSubtitle> }
