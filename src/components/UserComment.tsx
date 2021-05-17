@@ -11,9 +11,10 @@ type Props = {
 export default function UserComment({ comment }: Props) {
     const dateString = convertToFormattedDateString(comment.date);
     return (
-        <div>
-            <p>{ comment.comment }</p>
-            <p>---{ comment.author }, { dateString }</p>
+        <div data-test="component-comment">
+            <p data-test="comment-text">{ comment.comment }</p>
+            <p data-test="author-name">{ comment.author }</p>
+            <span data-test="date-time">{ ", " + dateString }</span>
         </div>
     )
 }
