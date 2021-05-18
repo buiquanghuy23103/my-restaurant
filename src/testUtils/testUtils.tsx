@@ -1,6 +1,6 @@
 import { ReactWrapper, ShallowWrapper } from "enzyme";
-import { createStore } from "redux";
-import { appReducer, AppState, middleWare } from "../redux/configureStore";
+import { applyMiddleware, createStore } from "redux";
+import { appReducer, AppState, middlewares } from "../redux/configureStore";
 
 /**
  * Return node(s) with the given data-test attribute
@@ -33,5 +33,5 @@ const defaultAppState: AppState = {
 }
 
 export const storeFactory = (initialState: AppState = defaultAppState) => {
-    return createStore(appReducer, initialState, middleWare);
+    return createStore(appReducer, initialState, applyMiddleware(...middlewares));
 }

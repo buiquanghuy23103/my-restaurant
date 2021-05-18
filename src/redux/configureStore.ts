@@ -3,8 +3,7 @@ import commentReducer from "./comment/commentReducer";
 import dishReducer from "./dish/dishReducer";
 import leaderReducer from "./leader/leaderReducer";
 import promotionReducer from "./promotion/promotionReducer";
-import thunk, { ThunkAction } from 'redux-thunk';
-import logger from 'redux-logger';
+import ReduxThunk, { ThunkAction } from 'redux-thunk';
 
 export const appReducer = combineReducers({
     leaderState: leaderReducer,
@@ -13,12 +12,12 @@ export const appReducer = combineReducers({
     commentState: commentReducer
 });
 
-export const middleWare = applyMiddleware(thunk, logger);
+export const middlewares = [ReduxThunk];
 
 export type AppState = ReturnType<typeof appReducer>
 
 export const configureStore = () => {
-    return createStore(appReducer, middleWare);
+    return createStore(appReducer, {}, applyMiddleware(...middlewares));
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<
