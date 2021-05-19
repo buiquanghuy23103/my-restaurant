@@ -9,7 +9,7 @@ export const findByTestAttr = (wrapper: ShallowWrapper | ReactWrapper, attrValue
     return wrapper.find(`[data-test='${attrValue}']`);
 }
 
-const defaultAppState: AppState = {
+export const defaultAppState: AppState = {
     leaderState: {
         leaders: [],
         isLoading: false,
