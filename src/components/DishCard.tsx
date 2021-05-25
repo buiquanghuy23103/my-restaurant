@@ -17,7 +17,7 @@ export default function DishCard({ dish }: Props) {
                 <Link to={ `/menu/${dish.id}` } >
                     <CardImg width="100%" src={ BASE_URL + dish.image } alt={ dish.name } />
                     <CardImgOverlay>
-                        <CardTitle>{ dish.name }</CardTitle>
+                        <CardTitle>adsfjlasf</CardTitle>
                     </CardImgOverlay>
                 </Link>
             </Card>
