@@ -105,7 +105,7 @@ export default function Header() {
                 </div>
             </header>
             <Modal isOpen={ isModalOpen } toggle={ toggleModal }>
-                <ModalHeader toggle={ toggleModal }>Login</ModalHeader>
+                <ModalHeader toggle={ toggleModal }>Login form</ModalHeader>
                 <ModalBody>
                     <LoginForm />
                 </ModalBody>
